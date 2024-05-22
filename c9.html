@@ -1,0 +1,918 @@
+<h1 id="que-es-un-paquete-npm-y-porque-se-utiliza">Que es un Paquete
+NPM? y porque se utiliza?</h1>
+<figure>
+<img src="images/npm.png" alt="npm" />
+<figcaption aria-hidden="true">npm</figcaption>
+</figure>
+<p><strong>Node Package Manager (npm)</strong> es un administrador de
+paquetes de JavaScript que gestiona las dependencias en proyectos
+escritos en Node.js.</p>
+<p>Con este administrador, puede administrar la instalación,
+actualización y eliminación de paquetes (bibliotecas). En términos
+generales, npm es el registro de software más grande del mundo.</p>
+<p>npm tiene tres componentes:</p>
+<ul>
+<li>Sitio web;</li>
+<li>interfaz de línea de comando (CLI);</li>
+<li>registro.</li>
+</ul>
+<p>Desde el sitio web, puede encontrar paquetes, configurar perfiles y
+administrar otros aspectos de su experiencia npm. Por ejemplo, puede
+configurar una organización para controlar el acceso a paquetes públicos
+o privados.</p>
+<p>La interfaz de línea de comandos (CLI) se ejecuta en la terminal a
+través de la cual los desarrolladores interactúan con npm.</p>
+<p>El registro es una gran base de datos pública con software JavaScript
+y metainformación que lo acompaña.</p>
+<h2 id="para-qué-se-utiliza-el-node-package-manager">¿Para qué se
+utiliza el Node Package Manager?</h2>
+<p>Los desarrolladores de software de código abierto de todo el mundo
+utilizan npm para compartir y tomar prestados paquetes.</p>
+<p>Con npm puedes:</p>
+<ul>
+<li>adapte paquetes de código a sus aplicaciones o utilícelos en su
+forma original;</li>
+<li>descargue herramientas sin conexión que pueda utilizar
+inmediatamente;</li>
+<li>ejecutar paquetes sin descargarlos;</li>
+<li>compartir código con cualquier usuario de npm, independientemente de
+su ubicación;</li>
+<li>limitar el acceso al código proporcionándolo únicamente a
+desarrolladores individuales;</li>
+<li>crear organizaciones para gestionar el mantenimiento de paquetes, la
+creación de códigos y la mano de obra de los desarrolladores;</li>
+<li>formar equipos virtuales utilizando organizaciones;</li>
+<li>gestionar versiones y dependencias de código;</li>
+<li>actualizar rápidamente las aplicaciones al actualizar el código
+subyacente;</li>
+<li>encontrar múltiples formas de resolver el mismo problema;</li>
+<li>Encuentre otros desarrolladores que estén trabajando en problemas y
+proyectos similares.</li>
+</ul>
+<h2 id="beneficios-de-usar-npm">Beneficios de usar npm</h2>
+<p>Existen muchos beneficios al usar npm al desarrollar proyectos de
+Node.js:</p>
+<ul>
+<li>Fácil de instalar. npm viene con Node.js, por lo que la instalación
+solo lleva unos minutos.</li>
+<li>Gestión de dependencia. npm simplifica la gestión de dependencias,
+lo cual es especialmente importante para proyectos con una gran cantidad
+de módulos. Cada paquete en npm es una colección de archivos y
+dependencias que puedes instalar y usar en tu proyecto.</li>
+<li>Soporte para paquetes de publicación. npm permite a los
+desarrolladores publicar sus paquetes, lo que les ayuda a compartir sus
+bibliotecas y módulos con otros desarrolladores de todo el mundo.</li>
+<li>Gran cantidad de paquetes disponibles. npm ofrece acceso a más de
+1,5 millones de paquetes, lo que permite a los desarrolladores encontrar
+rápida y fácilmente los módulos y bibliotecas que necesitan. Con npm
+puedes instalar paquetes desde el repositorio central de npm o desde
+archivos locales.</li>
+<li>Control de versiones. npm controla automáticamente las versiones de
+los paquetes, lo que permite a los desarrolladores evitar conflictos
+entre las versiones de los módulos. Puede instalar una versión
+específica de un paquete o puede actualizar el paquete a la última
+versión. Esto garantiza que su proyecto sea compatible con todas las
+dependencias requeridas.</li>
+<li>Soporte de línea de comando. El uso de comandos CLI le permite
+automatizar la instalación y la gestión de dependencias.</li>
+</ul>
+<p>El uso de npm facilita mucho el desarrollo de proyectos de Node.js,
+razón por la cual se ha convertido en uno de los administradores de
+paquetes más populares del mundo.</p>
+<h2 id="descripción-general-de-cómo-funciona-npm">Descripción general de
+cómo funciona npm</h2>
+<p>Para trabajar con npm necesitas instalar Node.js.</p>
+<p>Para publicar paquetes en espacios de nombres, debe crear una cuenta
+en npmjs.com y configurar la autenticación de dos factores (opcional,
+pero recomendada).</p>
+<p>Un paquete es un archivo o directorio descrito en el archivo
+<strong>package.json</strong> adjunto. Este archivo es necesario para
+publicar el paquete en el registro npm.</p>
+<p>Echemos un vistazo más de cerca a los procesos de instalación y
+creación de paquetes.</p>
+<h3 id="instalación-de-paquetes">Instalación de paquetes</h3>
+<p>Los paquetes se pueden instalar local o globalmente.</p>
+<h4 id="instalación-local">Instalación local</h4>
+<p>Instale el paquete localmente si su propio módulo depende de él, por
+ejemplo si está especificado en la función <strong>require()</strong>.
+Este es el comportamiento predeterminado de npm.</p>
+<h5
+id="instalación-de-un-paquete-desde-el-espacio-de-nombres-global-paquete-sin-ámbito">Instalación
+de un paquete desde el espacio de nombres global (paquete sin
+ámbito)</h5>
+<p>Los paquetes del espacio de nombres global siempre son públicos.
+Cualquier usuario puede encontrar dicho paquete, descargarlo e
+instalarlo.</p>
+<p>Para instalar un paquete público, ejecute el siguiente comando en el
+directorio de su proyecto:</p>
+<pre class="shell"><code>npm install &lt;package_name&gt;</code></pre>
+<p>Se creará un directorio llamado <strong>node_modules</strong> en el
+directorio actual (si aún no se ha creado) y se descargará en él la
+versión más reciente del paquete.</p>
+<h5
+id="instalación-de-un-paquete-público-desde-un-espacio-de-nombres-específico-paquete-público-con-alcance">Instalación
+de un paquete público desde un espacio de nombres específico (paquete
+público con alcance)</h5>
+<p>Cualquiera puede descargar e instalar un paquete público de un
+espacio de nombres específico si el nombre del espacio de nombres se
+especifica durante la instalación:</p>
+<pre class="shell"><code>npm install @scope/package-name</code></pre>
+<h5 id="instalar-un-paquete-privado">Instalar un paquete privado</h5>
+<p>Los paquetes privados (privados) solo pueden ser descargados por
+aquellos a quienes se les ha otorgado acceso de lectura a esos paquetes.
+Estos paquetes siempre pertenecen a un espacio de nombres y deben
+especificarse durante la instalación:</p>
+<pre class="shell"><code>npm install @scope/private-package-name</code></pre>
+<h4 id="instalación-global">Instalación global</h4>
+<p>Para ejecutar paquetes globalmente, se recomienda utilizar npx, una
+utilidad para ejecutar paquetes npm.</p>
+<p>Si un paquete está instalado globalmente, puede usar su código como
+un conjunto de herramientas en su computadora local.</p>
+<p>Para descargar e instalar el paquete globalmente, ejecute el
+siguiente comando en el símbolo del sistema:</p>
+<pre class="shell"><code>npm install -g &lt;package_name&gt;
+</code></pre>
+<p>Si se produce un error de permisos de EACCES, es posible que deba
+reinstalar npm usando el administrador de versiones o cambiar
+manualmente el directorio predeterminado.</p>
+<h3 id="colocación-del-paquete">Colocación del paquete</h3>
+<p>Para colocar un paquete en el registro, necesita un archivo
+<strong>package.json</strong>, que contiene una descripción del paquete.
+Hace que el paquete sea fácil de instalar y administrar. En el archivo
+<strong>package.json</strong>:</p>
+<ul>
+<li>enumera los paquetes de los que depende su proyecto;</li>
+<li>especifica las versiones de paquetes que su proyecto puede
+usar;</li>
+<li>El diseño es reproducible para compartirlo fácilmente con otros
+desarrolladores.</li>
+</ul>
+<p>Para facilitar la búsqueda, se recomienda utilizar un campo de
+<em>descripción</em> personalizado en el archivo
+<strong>package.json</strong>.</p>
+<p>El archivo package.json se puede crear de dos maneras: (1)
+respondiendo preguntas en la CLI o (2) creando un package.json
+predeterminado.</p>
+<p>Para crear un archivo de la primera manera:</p>
+<ul>
+<li><p>En la línea de comando, vaya al directorio raíz de su módulo
+Node.js y ejecute <strong>npm init</strong>:</p>
+<ul>
+<li>para un módulo con un espacio de nombres, ejecute <strong>npm init
+–scope=<span class="citation"
+data-cites="scope-name">@scope-name</span></strong>;</li>
+<li>Para un módulo en el espacio de nombres global, ejecute <strong>npm
+init</strong>.</li>
+</ul></li>
+<li><p>Especifique valores para los campos obligatorios
+(<strong>name</strong> y <strong>version</strong>), así como el campo
+<strong>main</strong>:</p>
+<ul>
+<li><strong>name</strong>: nombre del módulo.</li>
+<li><strong>version</strong>: versión inicial del módulo.</li>
+<li><strong>main</strong>: un identificador de módulo que sirve como
+punto de entrada principal a su programa. Si no se establece este valor,
+el valor predeterminado es el archivo index.js en la raíz del
+paquete.</li>
+</ul></li>
+</ul>
+<p>Para crear un archivo package.json predeterminado, ejecute
+<strong>npm init –yes</strong>.</p>
+<p>Los campos <strong>name</strong> y <strong>version</strong> son
+obligatorios, independientemente de cómo cree el archivo
+<strong>package.json</strong>:</p>
+<ul>
+<li>El campo <strong>name</strong> contiene el nombre del paquete. El
+nombre debe ser una palabra y puede contener caracteres en minúscula,
+guión y guión bajo.</li>
+<li>El valor en el campo <strong>version</strong> debe cumplir con las
+pautas de control de versiones semánticas. Se indican tres números
+mediante un punto: la versión principal actual, la versión menor actual
+y los cambios menores. Por ejemplo, 1.1.0.</li>
+</ul>
+<p>Si desea proporcionar información sobre el autor de un paquete,
+utilice el siguiente formato:</p>
+<pre><code>My name my@email.com (http://website.com)</code></pre>
+<p>Todo el código para crear e inicializar el archivo
+<strong>package.json</strong> podría verse así:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;my-cool-package&quot;</span><span class="fu">,</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;version&quot;</span><span class="fu">:</span> <span class="st">&quot;1.0.0&quot;</span><span class="fu">,</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;author&quot;</span><span class="fu">:</span> <span class="er">My</span> <span class="er">name</span> <span class="er">my@email.com</span> <span class="er">(http://website.com)</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="archivo-para-cargar-un-módulo-usando-require">Archivo para
+cargar un módulo usando require()</h3>
+<p>La función <strong>require()</strong> es una función de Node.js para
+cargar módulos. Sus argumentos incluyen el nombre del módulo que
+necesitamos.</p>
+<p><strong>require()</strong> puede ser útil si queremos utilizar un
+módulo de terceros en nuestro paquete. Para crear un archivo
+<strong>package.json</strong> usando esta función, declararlo como una
+propiedad del objeto <strong>exports</strong>. Esto le dará acceso al
+código de terceros:</p>
+<pre><code>exports.logMsg = function() {
+  console.log(&quot;Hello!&quot;);
+}</code></pre>
+<h3
+id="crear-y-publicar-un-paquete-público-en-el-espacio-de-nombres-global">Crear
+y publicar un paquete público en el espacio de nombres global</h3>
+<ul>
+<li>en la línea de comando, cree un directorio de paquetes;</li>
+<li>vaya al directorio del paquete;</li>
+<li>en el directorio raíz del paquete, ejecute el comando <strong>npm
+init</strong>;</li>
+<li>responda las preguntas para crear un archivo
+<strong>package.json</strong>;</li>
+<li>cree un archivo README que describa el código y las instrucciones
+para usarlo;</li>
+<li>crear código de paquete;</li>
+<li>revise el paquete en busca de información confidencial y retírelo si
+está presente;</li>
+<li>pruebe el paquete especificando la ruta completa a su directorio:
+<strong>npm install path/to/my-package</strong>;</li>
+<li>Publique el paquete ejecutando el comando <strong>npm
+publish</strong> desde el directorio raíz del paquete;</li>
+<li>Para ver un paquete publicado, vaya a
+<em>https://npmjs.com/package/package-name</em> y reemplace
+<em>package-name</em> con el nombre de su paquete.</li>
+</ul>
+<blockquote>
+<p>¡Importante! No incluya información confidencial en los paquetes.</p>
+</blockquote>
+<h3
+id="crear-y-publicar-un-paquete-público-en-un-espacio-de-nombres-específico">Crear
+y publicar un paquete público en un espacio de nombres específico</h3>
+<p>Para publicar un paquete npm en un espacio de nombres personalizado,
+cree una cuenta <strong>npm</strong>. O, para publicar un paquete en el
+espacio de nombres de una organización, después de crear una cuenta,
+cree una organización.</p>
+<ul>
+<li>si usa npmrc para administrar cuentas, cambie al perfil deseado con
+el comando <strong>npmrc <profile-name></strong>;</li>
+<li>en la línea de comando, cree un directorio de paquetes;</li>
+<li>vaya al directorio del paquete;</li>
+<li>En el directorio raíz del paquete, ejecute uno de los siguientes
+comandos:
+<ul>
+<li>para un paquete en el espacio de nombres de la organización
+(reemplace my-org con el nombre de la organización): <strong>npm init
+–scope=<span class="citation"
+data-cites="my-org">@my-org</span></strong>;</li>
+<li>para un paquete en el espacio de nombres de usuario (reemplace
+mi-nombre de usuario con el nombre de usuario): <strong>npm init
+–scope=<span class="citation"
+data-cites="my-username">@my-username</span></strong>.</li>
+</ul></li>
+<li>responda las preguntas para crear un archivo
+<strong>package.json</strong>;</li>
+<li>cree un archivo README que describa el código y las instrucciones
+para usarlo;</li>
+<li>crear código de paquete;</li>
+<li>revise el paquete en busca de información confidencial y retírelo si
+está presente;</li>
+<li>pruebe el paquete especificando la ruta completa a su directorio:
+<strong>npm install path/to/my-package</strong>;</li>
+<li>publique el paquete ejecutando el comando <strong>npm publish
+–access public</strong> desde el directorio raíz del paquete;</li>
+<li>Para ver un paquete publicado, vaya a
+<strong>https://npmjs.com/package/package-name</strong>, reemplazando
+<strong>package-name</strong> con el nombre de su paquete.</li>
+</ul>
+<h2 id="conclusión">Conclusión</h2>
+<p>npm es una herramienta importante e imprescindible para desarrollar
+proyectos Node.js. Debido al hecho de que el repositorio npm contiene
+una gran cantidad de paquetes, los desarrolladores pueden agregar
+funcionalidad a sus proyectos de manera rápida y conveniente utilizando
+módulos y bibliotecas ya preparados.</p>
+<p>Una de las principales ventajas de npm es la facilidad de instalación
+y gestión de dependencias. Con el comando npm install, puede instalar
+rápidamente todos los paquetes necesarios para un proyecto y, con la
+administración de dependencias, npm instala y actualiza automáticamente
+las dependencias de los paquetes.</p>
+<p>Además, npm proporciona capacidades de publicación de paquetes, lo
+que permite a los desarrolladores compartir sus módulos y bibliotecas
+con otros desarrolladores de todo el mundo. De esta manera, puedes crear
+proyectos mejores y más eficientes a través de la interacción y
+colaboración entre desarrolladores.</p>
+<hr />
+<h1 id="que-es-moment.js">Que es Moment.Js?</h1>
+<figure>
+<img src="images/moment.png" alt="moment" />
+<figcaption aria-hidden="true">moment</figcaption>
+</figure>
+<p><a href="https://momentjs.com/docs/#/-project-status/">Detención del
+desarrollo de la biblioteca Moment.js</a></p>
+<p>Los desarrolladores de la biblioteca JavaScript
+<strong>Moment.js</strong> han anunciado que dejarán de desarrollar y
+trasladarán el proyecto al modo de mantenimiento, lo que significa
+detener la expansión de la funcionalidad, congelar la API y limitar la
+actividad para corregir errores graves, que reflejan los cambios de la
+base de datos de zona horaria. y mantener la infraestructura para los
+usuarios existentes. No se recomienda utilizar
+<strong>Moment.js</strong> para proyectos nuevos.</p>
+<p>La biblioteca <strong>Moment.js</strong> proporciona funciones para
+manipular la hora y las fechas y es el estándar de facto en su campo. La
+biblioteca se descarga aproximadamente 12 millones de veces por semana.
+El motivo de la decisión fue darse cuenta de que el proyecto estaba
+desactualizado y no encajaba en los paradigmas modernos de desarrollo de
+JavaScript. Las desventajas incluyen el tamaño relativamente grande de
+la biblioteca (329 KB sin compresión, 70 KB con compresión) y el uso de
+objetos mutables (mutables, cambiar una copia del objeto momento al
+detener el desarrollo de la biblioteca <strong>Moment.js</strong>
+conduce a cambiar el original).</p>
+<p>Las revisiones también mencionan problemas con
+<strong>Moment.js</strong>, como bajo rendimiento, API confusa, falta de
+soporte para <em>“Tree shake”</em> (recortar el código no utilizado para
+reducir el tamaño de una aplicación web) y una depuración que requiere
+mucha mano de obra. Aparentemente, la gota que colmó el vaso que empujó
+a los desarrolladores a tomar la decisión de mover
+<strong>Moment.js</strong> al modo de mantenimiento fue un cambio en el
+sistema de auditoría de páginas web de Lighthouse integrado en las
+herramientas para desarrolladores web de Chrome; hace unos días,
+Lighthouse comenzó a emitir una advertencia sobre código excesivo. Infle
+<strong>Moment.js</strong> y sugiera alternativas de reemplazo.</p>
+<p>Los navegadores modernos proporcionan una API <strong>Intl</strong>
+incorporada para trabajar con configuraciones regionales y zonas
+horarias. Esta API se utiliza en la biblioteca <strong>Luxon</strong>,
+creada por uno de los contribuyentes de <strong>Moment.js</strong> y
+promocionada como el siguiente paso en la evolución de
+<strong>Moment.js</strong>. Además de <strong>Luxon</strong>, las
+bibliotecas <strong>Day.js</strong> (una versión minimalista de
+<strong>Moment.js</strong> con una API similar, ocupa alrededor de 7 KB
+sin complementos), <strong>date-fns</strong>, <strong>js-joda</strong>
+(puerto <strong>java.time</strong>) y JavaScript estándar
+<strong>Date</strong> y <strong>Intl</strong>, así como el borrador de
+la API temporal.</p>
+<hr />
+<h1 id="es-importante-la-documentación-en-los-paquetes-explique">Es
+importante la documentación en los paquetes? explique</h1>
+<figure>
+<img src="images/docs.png" alt="docs" />
+<figcaption aria-hidden="true">docs</figcaption>
+</figure>
+<p>La preparación de la documentación del software es una etapa muy
+importante en el proceso de desarrollo y lanzamiento. Lamentablemente,
+no todas las empresas le prestan la suficiente atención, lo que afecta
+negativamente tanto al mantenimiento y desarrollo del software como a la
+interacción con sus usuarios.</p>
+<h2
+id="qué-es-la-documentación-técnica-del-software-sus-tipos-y-formatos">¿Qué
+es la documentación técnica del software? Sus tipos y formatos</h2>
+<p>La documentación de software es un conjunto de documentos que
+describen en detalle las características técnicas y las cualidades de
+consumo del software, así como información sobre el proceso de su
+desarrollo, aplicación y mantenimiento.</p>
+<p>El paquete de documentación del software incluye no sólo materiales
+técnicos, sino también muchos otros tipos de documentos. Estos incluyen
+manuales, instrucciones de usuario y ayuda, revisiones de software,
+especificaciones, técnicas de prueba, etc. Para facilitar la
+clasificación, toda esta documentación se divide en 4 categorías:</p>
+<ul>
+<li><strong>Diseño (arquitectónico)</strong>. Describe los fundamentos,
+metas, objetivos y fases del proyecto que se aplican a la creación de
+software y su entorno operativo. Es una descripción general del
+software, destinada principalmente a los especialistas que trabajan en
+el proyecto.</li>
+<li><strong>Técnico</strong>. En ocasiones, este es el nombre que se le
+da a absolutamente toda la documentación de software, aunque esto no es
+del todo cierto. La propia documentación técnica incluye una descripción
+del código del programa y las funciones que realiza, estructuras de
+datos, algoritmos, API e interfaces. Además, muestra en detalle el
+proceso de desarrollo de software, su principio de funcionamiento y
+procedimiento operativo. A menudo, estos materiales se suministran
+completos con el código fuente del programa o están integrados en forma
+de comentarios. Para simplificar la creación y actualización de
+documentos técnicos, se utilizan plantillas especiales o esto se hace de
+forma automática mediante generadores de documentación (Javadoc,
+Doxygen, NDoc, etc.).</li>
+<li><strong>Costumbre</strong>. Si los dos primeros tipos de materiales
+están dirigidos a especialistas, esta categoría está destinada a
+usuarios de software. No contiene descripciones técnicas complejas del
+código y cómo funciona, sino que se centra en describir las funciones
+del software y cómo utilizarlo. Los formatos más comunes para la
+documentación del usuario incluyen la Guía del usuario y la Referencia
+del usuario. También suele contener instrucciones para resolver
+problemas y respuestas a preguntas frecuentes.</li>
+<li><strong>Marketing</strong>. Otro tipo principal de documentación de
+software son los materiales de marketing, que ayudan a atraer la
+atención del público objetivo hacia el producto, informan sobre su
+propósito, capacidades y ventajas. A diferencia de la documentación de
+usuario, la documentación de marketing es mucho más concisa. A menudo
+consiste en un único folleto publicitario diseñado para familiarizar al
+usuario con el programa o aplicación.</li>
+</ul>
+<h2 id="cómo-debería-ser-la-documentación-de-calidad">¿Cómo debería ser
+la documentación de calidad?</h2>
+<p>En primer lugar, debe cumplir una serie de normas determinadas. A
+saber, tales como:</p>
+<ul>
+<li><strong>Estructuración</strong>. Tener una estructura clara es uno
+de los requisitos más importantes para la documentación técnica. Debe
+estar organizado lógicamente en secciones y subsecciones, tener
+párrafos, listas y otros elementos de formato de texto. Si hablamos de
+manuales de usuario, entonces una descripción de texto por sí sola no es
+suficiente; debe complementarse con capturas de pantalla de alta calidad
+del programa. No menos populares son los manuales en vídeo, que, sin
+embargo, no pueden reemplazar completamente los materiales de
+texto.</li>
+<li><strong>Uniformidad</strong>. Toda la documentación del software
+debe redactarse en un formato unificado, incluidos los documentos
+técnicos y de diseño para los empleados y los materiales para los
+usuarios. Además, a medida que lo redactes, debes consultar con otros
+documentos emitidos por tu empresa para mantener un estilo corporativo
+coherente. También sería una buena idea estandarizar el proceso de
+preparación de la documentación con antelación para evitar discrepancias
+en el futuro.</li>
+<li><strong>Contenido de informacion</strong>. Otra característica
+importante de la documentación de software de alta calidad es su
+claridad y contenido informativo. Para lograr este objetivo, es
+necesario poder lograr un equilibrio entre el volumen de datos y la
+simplicidad de su presentación. Tanto la falta como el exceso de
+información pueden empeorar este indicador, especialmente cuando se
+trata de documentación de usuario. Por un lado, no es necesario hacerlo
+demasiado superficial y simplificado y, por otro lado, no se debe
+permitir que el material se vuelva demasiado complicado.</li>
+<li><strong>Relevancia</strong>. Una buena documentación técnica debe
+estar destinada a un público objetivo específico. Crear una guía
+universal común para desarrolladores y usuarios es una tarea
+interesante, pero difícil, que probablemente no sea posible ni siquiera
+para un escritor técnico experimentado. Antes de desarrollar materiales,
+conviene determinar el círculo de empleados o clientes para quienes
+resultarán más útiles e interesantes. También es necesario tener una
+idea del nivel de preparación de la audiencia y qué tareas y problemas
+puede resolver esta documentación.</li>
+</ul>
+<h2 id="qué-son-los-términos-de-referencia-y-el-diseño-técnico">¿Qué son
+los términos de referencia y el diseño técnico?</h2>
+<p>Como regla general, no es necesario redactar toda la documentación
+técnica antes de comenzar el desarrollo del software. La mayoría de las
+veces, los proyectos de TI modernos se crean utilizando la metodología
+Agile y el trabajo en ellos se lleva a cabo en sprints, lo que permite
+escribir documentación en paralelo con el proceso de desarrollo.</p>
+<p>Sin embargo, hay varios documentos que idealmente deberían prepararse
+antes de comenzar el desarrollo de software: estos incluyen las
+especificaciones técnicas (TOR) y el diseño técnico (TP).</p>
+<p>La especificación técnica es un documento preliminar clave;
+proporciona una descripción general y el propósito del programa, sus
+objetivos comerciales, el alcance de trabajo esperado, así como el orden
+de las etapas de desarrollo, evaluación y aceptación del software. La
+especificación técnica la elabora un analista de negocios después de
+negociar con el cliente, por lo que es necesario registrar con precisión
+y detalle todos sus requisitos y visión del programa futuro. Si es
+necesario, también se discute con los miembros del equipo implementador
+del proyecto: desarrolladores, diseñadores, directores de proyecto, etc.
+De hecho, se trata de un planteamiento del problema expresado en forma
+documental.</p>
+<p>Después de redactar y acordar las especificaciones técnicas, se
+comienza a trabajar en el proyecto técnico, que ya está elaborado por un
+redactor técnico, no por un analista de negocios. TP es un conjunto de
+materiales que describe la arquitectura, escenarios, métodos, enfoques,
+soluciones técnicas y otros datos utilizados en el desarrollo del
+programa. Por ejemplo, un proyecto técnico muestra la estructura de
+servidores y bases de datos, diseños de interfaz, descripciones de
+algoritmos e integraciones con sistemas o equipos externos, escenarios
+de usuario, etc.</p>
+<p>En términos simples, si la especificación técnica responde a la
+pregunta “¿qué hay que hacer?”, entonces el proyecto técnico responde a
+la pregunta “¿cómo hacerlo?”.</p>
+<h2
+id="qué-es-un-redactor-técnico-características-tareas-y-problemas-de-esta-profesión.">¿Qué
+es un redactor técnico? Características, tareas y problemas de esta
+profesión.</h2>
+<p>El desarrollo de documentación técnica para software lo lleva a cabo
+un redactor técnico (escritor técnico). Prepara casi todo tipo de
+materiales, incluidos manuales de usuario y libros de referencia,
+proyectos técnicos para especialistas, textos de marketing, etc. Las
+responsabilidades laborales de un redactor técnico incluyen:</p>
+<ul>
+<li>Elaboración de documentación técnica de acuerdo con normas internas
+(corporativas), estatales o internacionales.</li>
+<li>Realizar cambios y adiciones a la documentación a medida que se
+actualiza el software, manteniéndolo actualizado.</li>
+<li>Elaboración de materiales gráficos y multimedia (esquemas, gráficos,
+capturas de pantalla, guías en video) de acuerdo con parámetros
+especificados e ingreso a la documentación técnica.</li>
+<li>Pruebas y análisis de nuevos programas y aplicaciones, aplicación de
+la experiencia y conocimientos adquiridos en la preparación de
+documentación.</li>
+<li>Recopilar la información necesaria sobre el software de todos los
+participantes del proyecto: desarrolladores, gerentes, diseñadores,
+evaluadores, clientes, etc.</li>
+<li>Traducción de documentación técnica a idiomas extranjeros,
+preparación de presentaciones técnicas, participación en procesos de
+implementación de software.</li>
+</ul>
+<p>Idealmente, un escritor técnico profesional es un humanista con
+formación técnica que comprende los conceptos básicos del desarrollo de
+TI, conoce terminología especializada, conoce algunos lenguajes de
+programación y lenguajes de marcado, así como herramientas para
+automatizar procesos de documentación. Al mismo tiempo, debe tener
+ciertas habilidades filológicas para poder redactar material técnico de
+manera concisa, informativa y comprensible tanto para los especialistas
+como para los usuarios comunes.</p>
+<p>Sin embargo, tal versatilidad y multitarea están al alcance de pocos,
+razón por la cual las empresas de TI a menudo se quejan de la dificultad
+de encontrar un buen redactor técnico. Por un lado, sus desarrolladores
+son las mejores personas para hablar de software, pero no saben cómo
+presentar el programa de forma concisa y comprensible para un no
+especialista. Y los autores de textos profesionales, por regla general,
+no entienden de programación, por lo que no pueden describir de manera
+precisa e informativa la estructura, funciones y otros matices técnicos
+del software.</p>
+<hr />
+<h1 id="manejo-de-errores-en-javascript">Manejo de errores en
+JavaScript</h1>
+<figure>
+<img src="images/jserror.jpg" alt="jserror" />
+<figcaption aria-hidden="true">jserror</figcaption>
+</figure>
+<h2
+id="errores-en-javascript-y-formas-universales-de-trabajar-con-ellos.">Errores
+en JavaScript y formas universales de trabajar con ellos.</h2>
+<p>Si algo sale mal en su código, puede utilizar la siguiente
+construcción.</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">&#39;something went wrong&#39;</span>)</span></code></pre></div>
+<p>Cuando se ejecuta este comando, se creará una instancia del objeto
+<strong>Error</strong> y se generará una excepción (o, como dicen,
+“lanzará”) con este objeto. La declaración <strong>throw</strong> puede
+generar excepciones que contengan expresiones arbitrarias. En este caso,
+la ejecución del script se detendrá si no se han tomado medidas para
+solucionar el error.</p>
+<p>Los programadores principiantes de JS generalmente no usan la
+declaración <strong>throw</strong>. Por lo general, encuentran
+excepciones generadas por el tiempo de ejecución del lenguaje o por
+bibliotecas de terceros. Cuando esto sucede, aparece algo como
+<em>ReferenceError: fs is not defined</em> en la consola y la ejecución
+del programa se detiene.</p>
+<h3 id="objeto-de-error">Objeto de error</h3>
+<p>Las instancias del objeto <strong>Error</strong> tienen varias
+propiedades que podemos usar. La primera propiedad que nos interesa es
+el mensaje. Aquí es donde termina la cadena que se puede pasar al
+constructor de error como argumento. Por ejemplo, a continuación se
+muestra la creación de una instancia del objeto <strong>Error</strong> y
+la salida a la consola de la cadena pasada por el constructor al acceder
+a su propiedad <strong>message</strong>.</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> myError <span class="op">=</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">&#39;please improve your code&#39;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(myError<span class="op">.</span><span class="at">message</span>) <span class="co">// please improve your code</span></span></code></pre></div>
+<p>La segunda propiedad del objeto, que es muy importante, es el
+seguimiento de la pila de errores. Esta es la propiedad
+<strong>stack</strong>. Al acceder a él, puede ver la pila de llamadas
+(historial de errores), que muestra la secuencia de operaciones que
+llevaron al funcionamiento incorrecto del programa. En particular, esto
+le permite comprender qué archivo contiene el código defectuoso y ver
+qué secuencia de llamadas a funciones provocaron el error. A
+continuación se muestra un ejemplo de lo que puede ver accediendo a la
+propiedad <strong>stack</strong>.</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Error</span><span class="op">:</span> please improve your code</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a> at <span class="bu">Object</span><span class="op">.&lt;</span>anonymous<span class="op">&gt;</span> (<span class="ss">/Users/gisderdube/Documents/_projects/hacking.nosync/error</span><span class="op">-</span>handling<span class="op">/</span>src<span class="op">/</span>general<span class="op">.</span><span class="at">js</span><span class="op">:</span><span class="dv">1</span><span class="op">:</span><span class="dv">79</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> at Module<span class="op">.</span><span class="fu">_compile</span> (internal<span class="op">/</span>modules<span class="op">/</span>cjs<span class="op">/</span>loader<span class="op">.</span><span class="at">js</span><span class="op">:</span><span class="dv">689</span><span class="op">:</span><span class="dv">30</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a> at <span class="bu">Object</span><span class="op">.</span><span class="at">Module</span><span class="op">.</span><span class="at">_extensions</span><span class="op">..</span><span class="fu">js</span> (internal<span class="op">/</span>modules<span class="op">/</span>cjs<span class="op">/</span>loader<span class="op">.</span><span class="at">js</span><span class="op">:</span><span class="dv">700</span><span class="op">:</span><span class="dv">10</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a> at Module<span class="op">.</span><span class="fu">load</span> (internal<span class="op">/</span>modules<span class="op">/</span>cjs<span class="op">/</span>loader<span class="op">.</span><span class="at">js</span><span class="op">:</span><span class="dv">599</span><span class="op">:</span><span class="dv">32</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a> at <span class="fu">tryModuleLoad</span> (internal<span class="op">/</span>modules<span class="op">/</span>cjs<span class="op">/</span>loader<span class="op">.</span><span class="at">js</span><span class="op">:</span><span class="dv">538</span><span class="op">:</span><span class="dv">12</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a> at <span class="bu">Function</span><span class="op">.</span><span class="at">Module</span><span class="op">.</span><span class="fu">_load</span> (internal<span class="op">/</span>modules<span class="op">/</span>cjs<span class="op">/</span>loader<span class="op">.</span><span class="at">js</span><span class="op">:</span><span class="dv">530</span><span class="op">:</span><span class="dv">3</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a> at <span class="bu">Function</span><span class="op">.</span><span class="at">Module</span><span class="op">.</span><span class="fu">runMain</span> (internal<span class="op">/</span>modules<span class="op">/</span>cjs<span class="op">/</span>loader<span class="op">.</span><span class="at">js</span><span class="op">:</span><span class="dv">742</span><span class="op">:</span><span class="dv">12</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a> at <span class="fu">startup</span> (internal<span class="op">/</span>bootstrap<span class="op">/</span>node<span class="op">.</span><span class="at">js</span><span class="op">:</span><span class="dv">266</span><span class="op">:</span><span class="dv">19</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a> at <span class="fu">bootstrapNodeJSCore</span> (internal<span class="op">/</span>bootstrap<span class="op">/</span>node<span class="op">.</span><span class="at">js</span><span class="op">:</span><span class="dv">596</span><span class="op">:</span><span class="dv">3</span>)</span></code></pre></div>
+<p>Aquí, en la parte superior, hay un mensaje de error, seguido de una
+indicación de la sección de código cuya ejecución causó el error, luego
+una descripción del lugar desde donde se llamó esta sección defectuosa.
+Esto continúa hasta que el fragmento de código está “más alejado” del
+error.</p>
+<h2 id="generación-y-manejo-de-errores.">Generación y manejo de
+errores.</h2>
+<p>Crear una instancia del objeto <strong>Error</strong>, es decir,
+ejecutar un comando como <strong>new Error()</strong>, no tiene
+consecuencias especiales. Empiezan a suceder cosas interesantes después
+de usar el operador <strong>throw</strong>, que genera un error. Como ya
+se mencionó, si no se soluciona dicho error, la ejecución del script se
+detendrá. No importa si el operador <strong>throw</strong> fue utilizado
+por el propio programador o si se produjo un error en una determinada
+biblioteca o en el entorno de ejecución del lenguaje (en el navegador o
+en Node.js). Hablemos de diferentes escenarios de manejo de errores.</p>
+<h3 id="la-construcción-trycatch">La construcción try…catch</h3>
+<p>El bloque <strong>try…catch</strong> es la forma más sencilla y a
+menudo pasada por alto de manejar errores. Hoy en día, sin embargo, se
+usa mucho más intensamente que antes, debido al hecho de que puede
+usarse para manejar errores en construcciones
+<strong>async/await</strong>.</p>
+<p>Este bloque se puede utilizar para manejar cualquier error que ocurra
+en el código sincrónico. Veamos un ejemplo.</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(b) <span class="co">// la variable b no está declarada - se produce un error</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">catch</span> (err) {</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(err) <span class="co">// el mensaje de error y la pila de errores se envían a la consola</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a) <span class="co">// la ejecución del script no se detiene, este comando se ejecuta</span></span></code></pre></div>
+<p>Si en este ejemplo no hubiéramos incluido el comando fallido
+<em>console.log(b)</em> en un bloque <strong>try…catch</strong>, el
+script habría dejado de ejecutarse.</p>
+<h3 id="bloque-finally">Bloque finally</h3>
+<p>A veces sucede que es necesario ejecutar algún código
+independientemente de si ocurrió un error o no. Para hacer esto, puede
+usar el tercer bloque opcional en la construcción
+<strong>try…catch</strong> - <strong>finally</strong>. A menudo su uso
+equivale a algún código que viene inmediatamente después de
+<strong>try…catch</strong>, pero en algunas situaciones puede resultar
+útil. A continuación se muestra un ejemplo de su uso.</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> a <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> {</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(b) <span class="co">// la variable b no está declarada: se produce un error</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">catch</span> (err) {</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(err) <span class="co">// Aparecen un mensaje de error y una pila de errores en la consola.</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">finally</span> {</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(a) <span class="co">// este código se ejecutará de todos modos</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="mecanismos-asincrónicos-devoluciones-de-llamada">Mecanismos
+asincrónicos: devoluciones de llamada</h2>
+<p>Al programar en JavaScript, siempre debes prestar atención a las
+secciones de código que se ejecutan de forma asincrónica. Si tiene una
+función asincrónica y arroja un error, el script continuará
+ejecutándose. Cuando se implementan mecanismos asincrónicos en JS
+mediante devoluciones de llamada (por cierto, esto no se recomienda), la
+devolución de llamada correspondiente (función de devolución de llamada)
+generalmente recibe dos parámetros. Esto es algo así como un parámetro
+err, que puede contener un error y un resultado, con los resultados de
+una operación asincrónica. Se parece a esto:</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">myAsyncFunc</span>(someInput<span class="op">,</span> (err<span class="op">,</span> result) <span class="kw">=&gt;</span> {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(err) <span class="cf">return</span> <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(err)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(result)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<p>Si se envía un error a la devolución de llamada, es visible allí como
+el parámetro err. De lo contrario, este parámetro contendrá el valor
+indefinido o nulo. Si resulta que hay algo en error, es importante
+reaccionar ante ello, ya sea como en nuestro ejemplo, usando el comando
+return, o usando la construcción if…else y colocando comandos en el
+bloque else para trabajar con el resultado de la operación asincrónica.
+La cuestión es que, en caso de que se produzca un error, para excluir la
+posibilidad de trabajar con el resultado, se utiliza el parámetro
+resultado, que en este caso puede tener el valor indefinido. Trabajar
+con un valor de este tipo si se supone, por ejemplo, que contiene un
+objeto, puede provocar un error. Digamos que esto sucede cuando intentas
+utilizar la construcción result.data o algo similar.</p>
+<h2 id="mecanismos-asincrónicos-promesas">Mecanismos asincrónicos:
+promesas</h2>
+<p>Para realizar operaciones asincrónicas en JavaScript, es mejor
+utilizar promesas en lugar de devoluciones de llamada. Aquí, además de
+una mejor legibilidad del código, también existen mecanismos de manejo
+de errores más avanzados. Es decir, no hay necesidad de perder el tiempo
+con un objeto de error que podría terminar en una función de devolución
+de llamada cuando se usan promesas. Para ello está previsto un bloque de
+captura especial. Detecta todos los errores que ocurrieron en las
+promesas anteriores, o todos los errores que ocurrieron en el código
+después del bloque catch anterior. Tenga en cuenta que si hay un error
+en la promesa de que no hay ningún bloque catch que manejar, esto no
+detendrá la ejecución del script, pero el mensaje de error no será
+particularmente legible.</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(node<span class="op">:</span><span class="dv">7741</span>) UnhandledPromiseRejectionWarning<span class="op">:</span> Unhandled promise <span class="fu">rejection</span> (rejection id<span class="op">:</span> <span class="dv">1</span>)<span class="op">:</span> <span class="bu">Error</span><span class="op">:</span> something went wrong</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>(node<span class="op">:</span><span class="dv">7741</span>) DeprecationWarning<span class="op">:</span> Unhandled promise rejections are deprecated<span class="op">.</span> <span class="at">In</span> the future<span class="op">,</span> promise rejections that are not handled will terminate the <span class="bu">Node</span><span class="op">.</span><span class="at">js</span> <span class="bu">process</span> <span class="cf">with</span> a non<span class="op">-</span>zero exit code<span class="op">.</span> <span class="op">*</span><span class="ss">/</span></span></code></pre></div>
+<p>Como resultado, siempre podemos recomendar el uso de un bloque catch
+cuando trabajemos con promesas. Veamos un ejemplo.</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Promise</span><span class="op">.</span><span class="fu">resolve</span>(<span class="dv">1</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(res <span class="kw">=&gt;</span> {</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(res) <span class="co">// 1</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">&#39;something went wrong&#39;</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">Promise</span><span class="op">.</span><span class="fu">resolve</span>(<span class="dv">2</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(res <span class="kw">=&gt;</span> {</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(res) <span class="co">// este bloque no se ejecutará</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">catch</span>(err <span class="kw">=&gt;</span> {</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(err) <span class="co">// hablaremos sobre qué hacer con este error más adelante</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">Promise</span><span class="op">.</span><span class="fu">resolve</span>(<span class="dv">3</span>)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(res <span class="kw">=&gt;</span> {</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(res) <span class="co">// 3</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">catch</span>(err <span class="kw">=&gt;</span> {</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        <span class="co">// este bloque está aquí por si hay algún error en el bloque anterior</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(err)</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    })</span></code></pre></div>
+<h3 id="mecanismos-asincrónicos-y-trycatch">Mecanismos asincrónicos y
+try…catch</h3>
+<p>Después de que apareció la construcción <strong>async/await</strong>
+en JavaScript, volvimos a la forma clásica de manejar errores:
+<strong>try…catch…finally</strong>. Manejar errores con este enfoque
+resulta muy fácil y conveniente. Veamos un ejemplo.</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">;</span>(<span class="kw">async</span> <span class="kw">function</span>() {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">await</span> <span class="fu">someFuncThatThrowsAnError</span>()</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (err) {</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(err)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&#39;Easy!&#39;</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>})()</span></code></pre></div>
+<p>Con este enfoque, los errores en el código asincrónico se manejan de
+la misma manera que en el código sincrónico. Como resultado, ahora se
+puede manejar una gama más amplia de errores en un solo bloque catch si
+es necesario.</p>
+<h2 id="generar-y-manejar-errores-en-el-código-del-servidor.">Generar y
+manejar errores en el código del servidor.</h2>
+<p>Ahora que tenemos herramientas para trabajar con errores, veamos qué
+podemos hacer con ellos en situaciones reales. Generar y manejar
+correctamente errores es un aspecto crítico de la programación del
+servidor. Existen diferentes enfoques para abordar los errores. Aquí
+demostraremos un enfoque que utiliza un constructor personalizado para
+instancias del objeto Error y códigos de error, que son convenientes
+para pasar al frontend o a cualquier mecanismo que utilice API del lado
+del servidor. Realmente no importa cómo esté estructurado el backend de
+un proyecto en particular, ya que con cualquier enfoque puedes usar las
+mismas ideas con respecto a trabajar con errores.</p>
+<p>Usaremos Express.js como marco del lado del servidor responsable del
+enrutamiento. Pensemos en qué tipo de estructura necesitamos para
+organizar un sistema eficaz de manejo de errores. Así que esto es lo que
+necesitamos:</p>
+<ul>
+<li>El manejo universal de errores es un mecanismo básico adecuado para
+manejar cualquier error, durante el cual simplemente emite un mensaje
+como Algo salió mal, inténtelo de nuevo o contáctenos, solicitando al
+usuario que intente nuevamente la operación fallida o que se comunique
+con el propietario del servidor. Este sistema no es especialmente
+inteligente, pero al menos es capaz de informar al usuario de que algo
+ha ido mal. Un mensaje como este es mucho mejor que “carga infinita” o
+algo similar.</li>
+<li>El manejo de errores específicos es un mecanismo que permite
+proporcionar al usuario información detallada sobre los motivos del
+comportamiento incorrecto del sistema y brindarle consejos específicos
+sobre cómo combatir el problema. Por ejemplo, esto puede deberse a la
+ausencia de algunos datos importantes en la solicitud que el usuario
+envía al servidor, o al hecho de que ya existe un determinado registro
+en la base de datos que está intentando agregar nuevamente, etc.</li>
+</ul>
+<h3
+id="desarrollando-su-propio-constructor-de-objetos-de-error">Desarrollando
+su propio constructor de objetos de error</h3>
+<p>Aquí usaremos la clase estándar <strong>Error</strong> y la
+ampliaremos. Usar mecanismos de herencia en JavaScript es un negocio
+arriesgado, pero en este caso estos mecanismos resultan muy útiles. ¿Por
+qué necesitamos la herencia? El hecho es que, para que el código se
+pueda depurar cómodamente, necesitamos información sobre el seguimiento
+de la pila de errores. Al ampliar la clase estándar
+<strong>Error</strong>, obtenemos capacidades de seguimiento de pila sin
+ningún esfuerzo adicional. Agregamos dos propiedades a nuestro propio
+objeto de error. La primera es la propiedad code, a la que se puede
+acceder mediante una construcción como err.code. La segunda es la
+propiedad de estado. Contendrá el código de estado HTTP, que está
+previsto transmitir a la parte del cliente de la aplicación.</p>
+<p>Así es como se ve la clase <strong>CustomError</strong>, cuyo código
+está formateado como un módulo.</p>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CustomError <span class="kw">extends</span> <span class="bu">Error</span> {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">constructor</span>(code <span class="op">=</span> <span class="st">&#39;GENERIC&#39;</span><span class="op">,</span> status <span class="op">=</span> <span class="dv">500</span><span class="op">,</span> <span class="op">...</span>params) {</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">super</span>(<span class="op">...</span>params)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (<span class="bu">Error</span><span class="op">.</span><span class="at">captureStackTrace</span>) {</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>            <span class="bu">Error</span><span class="op">.</span><span class="fu">captureStackTrace</span>(<span class="kw">this</span><span class="op">,</span> CustomError)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">code</span> <span class="op">=</span> code</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">status</span> <span class="op">=</span> status</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> CustomError</span></code></pre></div>
+<h3 id="enrutamiento">Enrutamiento</h3>
+<p>Ahora que nuestro objeto de error está listo para usarse, necesitamos
+configurar nuestra estructura de ruta. Como se mencionó anteriormente,
+necesitamos implementar un enfoque unificado para el manejo de errores
+que nos permita manejar los errores por igual para todas las rutas. De
+forma predeterminada, el marco Express.js no es totalmente compatible
+con este esquema de trabajo. El caso es que todas sus rutas están
+encapsuladas.</p>
+<p>Para solucionar este problema, podemos implementar nuestro propio
+controlador de ruta y definir la lógica de ruta como funciones
+regulares. Con este enfoque, si la función de ruta (o cualquier otra
+función) arroja un error, se pasará al controlador de ruta, que luego
+podrá pasarlo al lado cliente de la aplicación. Cuando ocurre un error
+en el servidor, planeamos pasarlo al frontend en el siguiente formato,
+asumiendo que se usará JSON-API para esto:</p>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">error</span><span class="op">:</span> <span class="st">&#39;SOME_ERROR_CODE&#39;</span><span class="op">,</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">description</span><span class="op">:</span> <span class="st">&#39;Something bad happened. Please try again or contact support.&#39;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Si en esta etapa lo que está sucediendo no le parece claro, no se
+preocupe, simplemente siga leyendo, intente trabajar con lo que se dice
+y gradualmente comprenderá todo. De hecho, cuando se trata de formación
+en informática, se necesita un enfoque de arriba hacia abajo,
+discutiendo primero las ideas generales y luego pasando a las
+específicas.</p>
+<p>Así es como se ve el código del controlador de ruta.</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> express <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;express&#39;</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> router <span class="op">=</span> express<span class="op">.</span><span class="fu">Router</span>()</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> CustomError <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;../CustomError&#39;</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>router<span class="op">.</span><span class="fu">use</span>(<span class="kw">async</span> (req<span class="op">,</span> res) <span class="kw">=&gt;</span> {</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">const</span> route <span class="op">=</span> <span class="pp">require</span>(<span class="vs">`.</span><span class="sc">${</span>req<span class="op">.</span><span class="at">path</span><span class="sc">}</span><span class="vs">`</span>)[req<span class="op">.</span><span class="at">method</span>]</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span> {</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>            <span class="kw">const</span> result <span class="op">=</span> <span class="fu">route</span>(req)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>            res<span class="op">.</span><span class="fu">send</span>(result)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">catch</span> (err) {</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (err <span class="kw">instanceof</span> CustomError) {</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> res<span class="op">.</span><span class="fu">status</span>(err<span class="op">.</span><span class="at">status</span>)<span class="op">.</span><span class="fu">send</span>({</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">error</span><span class="op">:</span> err<span class="op">.</span><span class="at">code</span><span class="op">,</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">description</span><span class="op">:</span> err<span class="op">.</span><span class="at">message</span><span class="op">,</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>                })</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>            } <span class="cf">else</span> {</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>                <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(err)</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> res<span class="op">.</span><span class="fu">status</span>(<span class="dv">500</span>)<span class="op">.</span><span class="fu">send</span>({</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">error</span><span class="op">:</span> <span class="st">&#39;GENERIC&#39;</span><span class="op">,</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">description</span><span class="op">:</span> <span class="st">&#39;Something went wrong. Please try again or contact support.&#39;</span><span class="op">,</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>                })</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (err) {</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>        res<span class="op">.</span><span class="fu">status</span>(<span class="dv">404</span>)<span class="op">.</span><span class="fu">send</span>({</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>            <span class="dt">error</span><span class="op">:</span> <span class="st">&#39;NOT_FOUND&#39;</span><span class="op">,</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>            <span class="dt">description</span><span class="op">:</span> <span class="st">&#39;The resource you tried to access does not exist.&#39;</span><span class="op">,</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> router</span></code></pre></div>
+<p>Creemos que los comentarios del código lo explican bastante bien.
+Esperamos que sean más fáciles de leer que las explicaciones de códigos
+similares que se dan a continuación.</p>
+<p>Ahora echemos un vistazo al archivo de rutas.</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> CustomError <span class="op">=</span> <span class="pp">require</span>(<span class="st">&#39;../CustomError&#39;</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> GET <span class="op">=</span> req <span class="kw">=&gt;</span> {</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> { <span class="dt">name</span><span class="op">:</span> <span class="st">&#39;Rio de Janeiro&#39;</span> }</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> POST <span class="op">=</span> req <span class="kw">=&gt;</span> {</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">&#39;Some unexpected error, may also be thrown by a library or the runtime.&#39;</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> DELETE <span class="op">=</span> req <span class="kw">=&gt;</span> {</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">throw</span> <span class="kw">new</span> <span class="fu">CustomError</span>(<span class="st">&#39;CITY_NOT_FOUND&#39;</span><span class="op">,</span> <span class="dv">404</span><span class="op">,</span> <span class="st">&#39;The city you are trying to delete could not be found.&#39;</span>)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> PATCH <span class="op">=</span> req <span class="kw">=&gt;</span> {</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> {</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Error</span>(<span class="st">&#39;Some internal error&#39;</span>)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">catch</span> (err) {</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(err)</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="fu">CustomError</span>(</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;CITY_NOT_EDITABLE&#39;</span><span class="op">,</span></span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>            <span class="dv">400</span><span class="op">,</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;The city you are trying to edit is not editable.&#39;</span></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> {</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>    GET<span class="op">,</span></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    POST<span class="op">,</span></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>    DELETE<span class="op">,</span></span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>    PATCH<span class="op">,</span></span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>En estos ejemplos, no se hace nada con las consultas en sí. Aquí
+simplemente consideramos diferentes escenarios de error. Entonces, por
+ejemplo, una solicitud GET /city irá a la función const GET = req
+=&gt;…, una solicitud POST /city irá a la función const POST = req
+=&gt;…, y así sucesivamente. Este esquema también funciona cuando se
+utilizan parámetros de consulta. Por ejemplo, para una solicitud como
+GET /city?startsWith=R. En general, demuestra que al manejar errores, la
+interfaz puede recibir un error general que contiene solo una sugerencia
+para volver a intentarlo o contactar al propietario del servidor, o un
+error generado usando el constructor CustomError, que contiene
+información detallada sobre el problema. Los datos del error general
+llegarán a la parte cliente de la aplicación de la siguiente forma:</p>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">error</span><span class="op">:</span> <span class="st">&#39;GENERIC&#39;</span><span class="op">,</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">description</span><span class="op">:</span> <span class="st">&#39;Something went wrong. Please try again or contact support.&#39;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>El constructor CustomError se utiliza así:</p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">throw</span> <span class="kw">new</span> <span class="fu">CustomError</span>(<span class="st">&#39;MY_CODE&#39;</span><span class="op">,</span> <span class="dv">400</span><span class="op">,</span> <span class="st">&#39;Error description&#39;</span>)</span></code></pre></div>
+<p>Esto produce el siguiente código JSON pasado al frontend:</p>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">error</span><span class="op">:</span> <span class="st">&#39;MY_CODE&#39;</span><span class="op">,</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">description</span><span class="op">:</span> <span class="st">&#39;Error description&#39;</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
